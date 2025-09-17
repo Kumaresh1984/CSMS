@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: process.env.BASEPATH
+  output: 'standalone',
+  basePath: process.env.BASEPATH,
+  assetPrefix: ''
 }
 
 export default nextConfig
