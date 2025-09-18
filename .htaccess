@@ -1,38 +1,16 @@
-DirectoryIndex disabled
-
-# Redirect traffic to your port 3000
-
-RewriteEngine On
-RewriteBase /
-RewriteRule ^(.\*)?$ http://127.0.0.1:3000/$1 [P,L]
-
-# Enable Rewrite Engine
-
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-# Serve Next.js build static files
+# Allow Next.js static assets
 
-RewriteRule ^\_next/static/(.\*)$ /.next/static/$1 [L]
+RewriteRule ^\_next/static/(.\*)$ .next/static/$1 [L]
 
-# Optional: serve public folder files normally
+# Allow public folder assets (images, CSS, etc.)
 
-RewriteRule ^(.\*)$ public/$1 [L]
-</IfModule>
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
 
-# Allow access to .next folder
+# All other requests should go to Next.js (server.js or index.js)
 
-<Directory "/home/master/applications/cjgfnkkgpn/public_html/.next/static">
-Options FollowSymLinks
-AllowOverride All
-Require all granted
-</Directory>
-
-# Caching for performance
-
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType image/* "access plus 1 year"
+RewriteRule ^.\*$ index.js [L]
 </IfModule>
