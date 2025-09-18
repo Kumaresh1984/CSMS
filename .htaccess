@@ -1,16 +1,7 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
+DirectoryIndex disabled
 
-# Allow Next.js static assets
+# Redirect traffic to your port 3000
 
-RewriteRule ^\_next/static/(.\*)$ .next/static/$1 [L]
-
-# Allow public folder assets (images, CSS, etc.)
-
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^ - [L]
-
-# All other requests should go to Next.js (server.js or index.js)
-
-RewriteRule ^.\*$ index.js [L]
-</IfModule>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^(.\*)?$ http://127.0.0.1:3000/$1 [P,L]
