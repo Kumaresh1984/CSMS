@@ -1,17 +1,7 @@
-# Disable default index
-
 DirectoryIndex disabled
+
+# Redirect traffic to your port 3000
 
 RewriteEngine On
 RewriteBase /
-
-# Proxy all requests to Next.js server on port 3000
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.\*)$ http://127.0.0.1:3000/$1 [P,L]
-
-# Make sure Proxy is enabled
-
-ProxyPreserveHost On
-ProxyRequests Off
+RewriteRule ^(.\*)?$ http://127.0.0.1:3000/$1 [P,L]
