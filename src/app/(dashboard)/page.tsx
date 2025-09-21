@@ -20,7 +20,7 @@ const DashboardAnalytics = () => {
   const [data, setData] = useState('')
 
   useEffect(() => {
-    fetch('/api/test')
+    fetch('https://csms.contemsys.com/api/test')
       .then(res => res.text())
       .then((result: any) => {
         console.log(JSON.parse(result)) // prints in browser console
