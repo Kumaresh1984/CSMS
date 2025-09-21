@@ -1,9 +1,11 @@
-// MUI Imports
 'use client'
+
+import { useState, useEffect } from 'react'
+
 import Grid from '@mui/material/Grid'
 
-// Components Imports
 import Award from '@views/dashboard/Award'
+
 import Transactions from '@views/dashboard/Transactions'
 import WeeklyOverview from '@views/dashboard/WeeklyOverview'
 import TotalEarning from '@views/dashboard/TotalEarning'
@@ -13,7 +15,6 @@ import DepositWithdraw from '@views/dashboard/DepositWithdraw'
 import SalesByCountries from '@views/dashboard/SalesByCountries'
 import CardStatVertical from '@components/card-statistics/Vertical'
 import Table from '@views/dashboard/Table'
-import { useState, useEffect } from 'react'
 
 const DashboardAnalytics = () => {
   const [data, setData] = useState('')
@@ -27,6 +28,7 @@ const DashboardAnalytics = () => {
       })
       .catch(err => console.error('API call failed:', err))
   }, [])
+
   return (
     <>
       <Grid container spacing={6}>
