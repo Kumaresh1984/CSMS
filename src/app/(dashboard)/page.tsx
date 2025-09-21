@@ -20,7 +20,7 @@ const DashboardAnalytics = () => {
   const [data, setData] = useState('')
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/test')
+    fetch('/api/test')
       .then(res => res.text())
       .then((result: any) => {
         console.log(JSON.parse(result)) // prints in browser console
